@@ -1,28 +1,31 @@
          window.promises = [];
-let promises=[
-	createPromises(),
-	createPromises(),
-	createPromises(),
-	createPromises(),
- createPromises(),
-];
+window.onload = function() {
+  // Array to store promises
+  let promises = [
+    createPromise(),
+    createPromise(),
+    createPromise(),
+    createPromise(),
+    createPromise()
+  ];
 
+  // Use Promise.any() to wait for the first promise to resolve
+  Promise.any(promises)
+    .then(result => {
+      // Print the result to the output div
+      document.getElementById("output").innerText = result;
+    })
+    .catch(error => {
+      console.error("An error occurred:", error);
+    });
 
-Promise.any(promises)
-    .then((time) => {
-		document.getElementById("output").innerText=time;
-	}).catch(()=>{
-		console.error("error occurred",error);
-	});
-function createPromises() {
-	
-		const time=Math.random()*(4)+1;
-		return new Promise((resolve)=>{ 
-		setTimeout(()=>{
-			resolve(`Resolved after ${time}`);
-			
-		},time*6000);
-		
-	});
-	
-}
+  // Function to create a promise with random resolve time
+  function createPromise() {
+    const time = Math.random() * (4) + 1; // Random time between 1 and 5 seconds
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(`Resolved after ${time} seconds`);
+      }, time * 1000);
+    });
+  }
+};
