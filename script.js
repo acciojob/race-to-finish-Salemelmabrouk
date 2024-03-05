@@ -21,7 +21,7 @@ function createPromises() {
 		setTimeout(()=>{
 			resolve(`Resolved after ${time}`);
 			
-		},time*1000);
+		},time*6000);
 		
 	});
 	
