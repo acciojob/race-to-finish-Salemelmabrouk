@@ -1,6 +1,6 @@
          window.promises = [];
 window.onload = function() {
-  // Array to store promises
+   
   let promises = [
     createPromise(),
     createPromise(),
@@ -21,11 +21,11 @@ window.onload = function() {
 
   // Function to create a promise with random resolve time
   function createPromise() {
-    const time = Math.random() * (5) + 1; // Random time between 1 and 5 seconds
-    return new Promise(resolve => {
+    const time = Math.random() * (4) + 1; // Random time between 1 and 5 seconds
+    return new Promise((resolve) => {
       setTimeout(() => {
         resolve(`Resolved after ${time} seconds`);
       }, time * 1000);
-    });
+    })
   }
 };
